@@ -17,12 +17,21 @@ The code also depends on the Gnu Multiple precision library `gmp` and `libffi` t
 I mainly wrote and tested this code on MacOs 12.01. 
 In this version the easiest way (at lease for me) was to install the above mentioned tools and libs through `homebrew`.
 
+- Installation of dependencies with homebrew 
+```
+brew install gnuplot
+brew install gmp 
+brew install ffi 
+brew install guile 
+```
+
 At the writing of this `README` file the Homebrew formulae for Guile didn't link the headers and the libraries to the right places so including and linking always give nasty error messages.
+It seems that other packages creates links of their headers and libs to the proper places, no hacking required there.
 
 
 The solution for this was to link the proper headers and the dynamic library to `/usr/local/include` and `/usr/local/lib`
 
-Create symbolic link for the libraries
+- Create symbolic link for the libraries
 ```
 cd /usr/local/lib
 
@@ -32,7 +41,7 @@ ln -s ../Cellar/guile/3.0.8/lib/libguile-3.0.a libguile-3.0.a
 ```
 
 
-Create symbolic link for the header files 
+- Create symbolic link for the header files 
 ```
 cd /usr/local/include
 
