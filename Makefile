@@ -1,21 +1,20 @@
 # Handwritten Makefile for Scheme turtle graphics
 # Please use the CMake version in a build directory and leave this as is 
 
-
-.PHONY: clean build run
-
-build: tortoise
+all: tortoise graphics
 
 clean:
 	rm -f tortoise tortoise.o
+	rm -f main main.o
 
-run: tortoise
-	./tortoise
 
-tortoise: tortoise.o
-	gcc $< -lguile-3.0.1 -o $@ 
+tortoise: tortoise.c
+	gcc $< -lguile-3.0.1 -o $@
 
-tortoise.o: tortoise.c
-	gcc -c $< -lguile-3.0.1 -o $@
+
+graphics: graphics.cpp
+	g++ $< -lSDL2 -o $@
+
+
 
 
